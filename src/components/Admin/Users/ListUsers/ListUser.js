@@ -12,8 +12,6 @@ export function ListUser(props) {
     const {accessToken} = useAuth();
     const [users, setUsers] = useState(null);
 
-    console.log(users)
-
     useEffect(() => {
       (async () => {
         try {
