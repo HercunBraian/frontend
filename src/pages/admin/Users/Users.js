@@ -41,7 +41,7 @@ const panes =[
         <Tab menu={{secondary:false}} panes={panes} />
         </div>
 
-        <BasicModal show={showModal} close={onOpenCloseModal} title="Crear nuevo Usuario" >
+        <BasicModal show={showModal} close={onOpenCloseModal} title="Crear Nuevo Usuario" >
           <UserForm close={onOpenCloseModal} onReload={onReload} />
         </BasicModal>
     </>
