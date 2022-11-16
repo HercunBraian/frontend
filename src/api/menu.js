@@ -17,5 +17,48 @@ export class Menu{
             throw error;
         }
     }
+
+    async createMenu(accessToken, data){
+        try {
+            const url = `${this.baseApi}/${ENV.API_ROUTES.MENU}`;
+            const params = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${accessToken}`
+                },
+                body: JSON.stringify(data),
+            }; 
+
+            const response = await fetch(url, params)
+            const result = await response.json()
+            if(response.status !== 200) return result;
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    async updateMenu( accessToken, idMenu, data){
+        try {
+            const url = `${this.baseApi}/${ENV.API_ROUTES.MENU}/${idMenu}`
+            const params = {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${accessToken}`,
+                },
+                body: JSON.stringify(data),
+            }
+
+            const response = await fetch(url, params);
+            const result = await response.json();
+
+            if(response.status !== 200) return result;
+            return result;
+        } catch (error) {
+            throw error;
+        }
+    }
     
 }

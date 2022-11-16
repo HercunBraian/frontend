@@ -1,10 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./MenuItem.scss";
-import {Icon, Button, Confirm, ButtonOr} from "semantic-ui-react";
+import {Icon, Button, Confirm} from "semantic-ui-react";
+import {BasicModal} from "../../../Admin/Shared";
+import {Menu} from "../../../../api";
+import {useAuth} from "../../../../hooks";
+import {MenuForm} from "../MenuForm"
 
+const menuController = new Menu();
 
 export function MenuItem(props) {
-  const {menu} = props;
+
+  const {menu, onReload} = props;
+  
+  const [showModal, setShowModal] = useState(false);
+  const [titleModal, setTitleModal] = useState("");
+
+  const {accessToken} = useAuth();
+  
+  //Funcion para abrir o cerrar el modal
+  const onOpenCloseModal = () => setShowModal ((prevState) => !prevState);
+
+  const onOpenUpdateMenu = () => {
+    setTitleModal(`Actualizar menu: ${menu.title}`);
+    onOpenCloseModal();
+  }
   return (
     <>
       <div className='menu-item'>
@@ -15,7 +34,7 @@ export function MenuItem(props) {
 
         <div>
           <Button icon primary>
-            <Icon name="pencil" />
+            <Icon name="pencil" onClick={onOpenUpdateMenu} />
           </Button>
 
           <Button icon color={menu.active ? "orange" : "teal"}>
@@ -27,6 +46,10 @@ export function MenuItem(props) {
           </Button>
         </div>
       </div>
+
+      <BasicModal show={showModal} close={onOpenCloseModal} title={titleModal}>
+        <MenuForm onClose={onOpenCloseModal} onReload={onReload} menu={menu}  />
+      </BasicModal>
     </>
   )
 }
