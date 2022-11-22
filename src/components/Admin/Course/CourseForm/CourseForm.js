@@ -45,7 +45,9 @@ export function CourseForm(props) {
   });
 
   const { getRootProps, getInputProps } = useDropzone({
-    accept: "image/jpeg, image/png",
+    accept: {
+        'image/*': ['.jpeg', '.jpg', '.png'],
+    },
     onDrop,
   });
 
