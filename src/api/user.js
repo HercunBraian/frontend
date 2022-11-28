@@ -25,6 +25,7 @@ export class User{
 
     async createUser(accessToken, data){
       try {
+        // Utilizamos formdata para poder subir imagenes.
         const formData = new FormData();
         
         Object.keys(data).forEach((key) =>{

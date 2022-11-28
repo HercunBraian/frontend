@@ -8,7 +8,7 @@ import {map, size} from "lodash"
 const postController = new Post();
 
 export function ListPost(props) {
-  const {reload} = props;
+  const {reload, onReload} = props;
 
     const [posts, setPosts] = useState(null);
     const [pagination, setPagination] = useState(null);
@@ -40,7 +40,7 @@ export function ListPost(props) {
   return (
     <div className='list-post'>
        {map(posts, (post) => (
-          <PostItem key={post._id} post={post}  />
+          <PostItem key={post._id} onReload={onReload} post={post}  />
           ))}
 
           <div className="list-post__pagination">
