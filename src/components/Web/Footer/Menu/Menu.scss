@@ -1,0 +1,30 @@
+@import "../../../../scss/index.scss";
+
+.footer-menu{
+    width: 33.33%;
+    padding-left: 60px;
+
+    > h4{
+        color: $text-light;
+    }
+
+    .ui.grid{
+        height: 100%;
+
+        .column{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        
+        a{
+            color: $text-light;
+            &:hover{
+                opacity: 0.6;
+            }
+        }
+
+        }
+    }
+
+
+}

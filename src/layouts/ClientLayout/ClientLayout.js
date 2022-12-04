@@ -1,7 +1,7 @@
 import React from 'react'
 import {Container} from "semantic-ui-react";
 import "./ClientLayout.scss";
-import {TopBar} from "../../components/Web";
+import {TopBar, Footer} from "../../components/Web";
 
 export function ClientLayout(props) {
   const {children} = props;
@@ -14,9 +14,9 @@ export function ClientLayout(props) {
 
         <div className='client-layout__footer'>
         <Container>
-            <span>INFO</span>
-            <span>MENU</span>
-            <span>NEWSLETTER</span>
+            <Footer.Info />
+            <Footer.Menu />
+            <Footer.Newsletter />
           </Container>
           <Container>
             <span>@ ALL RIGHTS RESERVED</span>

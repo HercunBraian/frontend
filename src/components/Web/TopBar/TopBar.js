@@ -1,31 +1,31 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
+import { Container, Button } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { map } from "lodash";
+import { Icon } from "../../../assets";
+import { Menu } from "../../../api";
+import { socialData } from "../../../utils";
 import "./TopBar.scss";
-import {Container, Button} from "semantic-ui-react";
-import {Link} from "react-router-dom";
-import {map} from "lodash";
-import {Icon} from "../../../assets";
-import {Menu} from "../../../api";
-import {socialData} from "../../../utils";
 
 const menuController = new Menu();
 
 export function TopBar() {
     const [menu, setMenu] = useState(null);
-
+  
     useEffect(() => {
       (async () => {
         try {
-            const response = await menuController.getMenu(true);
-            setMenu(response);
+          const response = await menuController.getMenu(true);
+          setMenu(response);
         } catch (error) {
-            console.error(error)
+          console.error(error);
         }
-      })()
-    }, [])
+      })();
+    }, []);
     
   return (
-    <div>
-        <Container className='top-bar'>
+    <div className='top-bar'>
+        <Container >
             <div className='top-bar__left'>
                 <Link to="/" className='logo'>
                     <Icon.Logowhite />
