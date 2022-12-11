@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import {Container} from "semantic-ui-react";
+import {ListPost} from "../../../components/Web/Blog"
 
 export function Blog() {
   return (
-    <div>
-        <h1>Estamos en Blog Client</h1>
-    </div>
+    <Container>
+      <ListPost />
+    </Container>
   )
 }
